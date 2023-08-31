@@ -1,0 +1,79 @@
+﻿@model LivrariaControleEmprestimo.DATA.Models.VwLivroClienteEmprestimo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Alterar dados do emprestimo</h1>
+
+<h4>Altere o(s) dado(s) conforme necessidade</h4>
+<hr />
+
+<div>
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"> Voltar</i></a>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group col-sm-8">
+                <div class="form-group">
+                    <input type="hidden" asp-for="Id" class="form-control" />
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Informações sobre o emprestimo</div>
+                <div class="card-body row">
+
+                    <div class="form-group form-group col-sm-8">
+                        
+                        <input type="hidden" asp-for="LceIdLivro" class="form-control" />
+                        <span asp-validation-for="LceIdLivro" class="text-danger"></span>
+                        
+                        <input type="hidden" asp-for="LceIdCliente" class="form-control" />
+                        <span asp-validation-for="LceIdCliente" class="text-danger"></span>
+
+                        <label asp-for="CliNome" class="control-label"></label>
+                        <input readonly asp-for="CliNome" class="form-control" />
+                        <span asp-validation-for="CliNome" class="text-danger"></span>
+
+                        <label asp-for="LivroNome" class="control-label"></label>
+                        <input readonly asp-for="LivroNome" class="form-control" />
+                        <span asp-validation-for="LivroNome" class="text-danger"></span>
+
+
+                        <label asp-for="LceDataEmprestimo" class="control-label"></label>
+                        <input readonly asp-for="LceDataEmprestimo" class="form-control" />
+                        <span asp-validation-for="LceDataEmprestimo" class="text-danger"></span>
+
+                        <label asp-for="LceDataEntrega" class="control-label"></label>
+                        <input readonly asp-for="LceDataEntrega" class="form-control" />
+                        <span asp-validation-for="LceDataEntrega" class="text-danger"></span>
+
+                        <div style="color: red;" class="form-group form-check">
+                            <br />
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="LceEntregue" /> @Html.DisplayNameFor(model => model.LceEntregue)
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> Alterar a caixa de texto -> "Foi Entregue ?"</button>
+            </div>
+        </form>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

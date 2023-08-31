@@ -1,0 +1,112 @@
+﻿@model LivrariaControleEmprestimo.DATA.Models.Cliente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Novo Cliente</h1>
+
+<h4>Preencha os campos abaixo para inclusão de um novo Cliente</h4>
+<hr />
+
+<div>
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"> Voltar para a listagem</i></a>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card">
+                <div class="card-header">Informações Pessoais</div>
+                <div class="card-body row">
+
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CliCpf" class="control-label"></label>
+                            <input asp-for="CliCpf" class="form-control" />
+                            <span asp-validation-for="CliCpf" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CliNome" class="control-label"></label>
+                            <input asp-for="CliNome" class="form-control" />
+                            <span asp-validation-for="CliNome" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+                <div class="card-header">Endereço</div>
+                <div class="card-body row">
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CliEndereco" class="control-label"></label>
+                            <input asp-for="CliEndereco" class="form-control" />
+                            <span asp-validation-for="CliEndereco" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CliCidade" class="control-label"></label>
+                            <input asp-for="CliCidade" class="form-control" />
+                            <span asp-validation-for="CliCidade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CliBairro" class="control-label"></label>
+                            <input asp-for="CliBairro" class="form-control" />
+                            <span asp-validation-for="CliBairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CliNumero" class="control-label"></label>
+                            <input asp-for="CliNumero" class="form-control" />
+                            <span asp-validation-for="CliNumero" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+                <div class="card-header">Contato</div>
+                <div class="card-body row">
+
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CliTeleoneCelular" class="control-label"></label>
+                            <input asp-for="CliTeleoneCelular" class="form-control" />
+                            <span asp-validation-for="CliTeleoneCelular" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CliTelefoneFixo" class="control-label"></label>
+                            <input asp-for="CliTelefoneFixo" class="form-control" />
+                            <span asp-validation-for="CliTelefoneFixo" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <button type="submit"  class="btn btn-success btn-sm "><i class="fa fa-plus-circle"> Incluir Cliente</i></button>                
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

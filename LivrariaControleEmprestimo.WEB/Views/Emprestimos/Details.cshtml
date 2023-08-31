@@ -1,0 +1,56 @@
+﻿@model LivrariaControleEmprestimo.DATA.Models.VwLivroClienteEmprestimo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do emprestimo</h1>
+
+<div>
+    <h4>Confira os detalhes abaixo</h4>
+    <hr />
+    <div>
+        <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-pencil-square-o"></i> Alterar emprestimo</a>
+        <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"></i> Voltar</a>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-sm-8">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card">
+                    <div class="card-header">Informações sobre o emprestimo</div>
+                    <div class="card-body row">
+
+                        <div class="form-group col-sm-6">
+                            <label asp-for="CliNome" class="control-label"></label>
+                            <input disabled asp-for="CliNome" class="form-control" />
+
+                            <label asp-for="LivroNome" class="control-label"></label>
+                            <input disabled asp-for="LivroNome" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-sm-4">
+
+                            <label asp-for="LceDataEmprestimo" class="control-label"></label>
+                            <input disabled asp-for="LceDataEmprestimo" class="form-control" />
+
+                            <label asp-for="LceDataEntrega" class="control-label"></label>
+                            <input disabled asp-for="LceDataEntrega" class="form-control" />
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <div class="form-group form-check">
+                                <br />
+                                <label class="form-check-label">
+                                    <input disabled class="form-check-input" asp-for="LceEntregue" /> @Html.DisplayNameFor(model => model.LceEntregue)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,97 @@
+﻿@model LivrariaControleEmprestimo.DATA.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do cliente</h1>
+
+<div>
+    <h4>Confira os detalhes abaixo</h4>
+    <hr />
+
+    <div>
+        <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-pencil-square-o"></i> Alterar cliente</a> 
+        <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"> Voltar</i></a>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card">
+                    <div class="card-header">Informações pessoais</div>
+                    <div class="card-body row">
+
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CliCpf" class="control-label"></label>
+                                <input disabled asp-for="CliCpf" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CliNome" class="control-label"></label>
+                                <input disabled asp-for="CliNome" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="card">
+                    <div class="card-header">Endereço</div>
+                    <div class="card-body row">
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CliEndereco" class="control-label"></label>
+                                <input disabled asp-for="CliEndereco" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CliCidade" class="control-label"></label>
+                                <input disabled asp-for="CliCidade" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CliBairro" class="control-label"></label>
+                                <input disabled asp-for="CliBairro" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CliNumero" class="control-label"></label>
+                                <input disabled asp-for="CliNumero" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="card">
+                    <div class="card-header">Contato</div>
+                    <div class="card-body row">
+
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CliTeleoneCelular" class="control-label"></label>
+                                <input disabled asp-for="CliTeleoneCelular" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="CliTelefoneFixo" class="control-label"></label>
+                                <input disabled asp-for="CliTelefoneFixo" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </form>
+        </div>
+    </div>
+</div>

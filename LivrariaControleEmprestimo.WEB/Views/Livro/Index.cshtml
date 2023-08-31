@@ -1,0 +1,108 @@
+﻿@model IEnumerable<LivrariaControleEmprestimo.DATA.Models.Livro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Listagem de livros</h3>
+<hr />
+
+<p>
+    <a class="btn btn-success btn-sm" asp-action="Create"><i class="fa fa-book"></i> Add. novo livro</a>
+</p>
+
+<table style="font-size: 13px;" id="tblLivros" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LivroNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LivroAutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LivroEditora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LivroAnoPublicacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LivroEdicao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="padding-left: 25px; color: red;">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LivroNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LivroAutor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LivroEditora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LivroAnoPublicacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LivroEdicao)
+                </td>
+                <td class="row col-md">
+                    <a asp-action="Edit" class="btn btn-warning btn-sm rounded-circle mr-1" data-toggle="tooltip" data-placement="top" title="Alterar" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o"></i></a>
+                    <a asp-action="Details" class="btn btn-primary btn-sm rounded-circle mr-1" data-toggle="tooltip" data-placement="top" title="Detalhes" asp-route-id="@item.Id"><i class="fa fa-eye"></i></a>
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm rounded-circle mr-1" data-toggle="modal" data-target="#DeleteModal-@item.Id" data-toggle="tooltip" data-placement="top" title="Excluir">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="DeleteModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="DeleteModalLabel">Excluir Livro</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Deseja Realmente Excluir o Livro @item.LivroNome ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Não</button>
+                                    <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id"><i class="fa fa-check"></i> Sim</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            $('#tblLivros').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
+                }
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body style="background-color: azure;">
+
+    <!-- Modal -->
+    <div class="modal fade" id="aviso">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="DeleteModalLabel">Exclusão de Registro</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <P class="text-danger text-justify">
+                        Não é posssíve e nem aconselhavel excluir este registro, pois o mesmo possui ou possuiu uma relação de (EMPRÉSTIMO)
+                        ,ou seja, o livro  foi ou está emprestado a um cliente. E, é aconselhávevel, mesmo que o livro já tenha sido entregue a manter
+                        o registro para eventuais consultas futuras. <strong>
+                            Porém se mesmo assim desejar excluir este registro, primeiramente tera que excluir
+                            a relação (Emprestimos Livro X Cliente) para depois excluir o registro.
+                        </strong>
+                    </P>
+                    <br />
+                    <h5 class="text-justify">Dúvidas contate o administrador do Sistema.</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="Sair()" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-arrow-left"></i> Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function Sair() {
+        window.location.href = '../../Cliente/Index';
+    }
+    $('#aviso').modal('show');
+</script>

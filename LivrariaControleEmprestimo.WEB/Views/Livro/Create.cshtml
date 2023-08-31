@@ -1,0 +1,75 @@
+﻿@model LivrariaControleEmprestimo.DATA.Models.Livro
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Novo Livro</h1>
+
+<h4>Preencha os campos abaixo para inclusão de um novo Livro</h4>
+<hr />
+<div>
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"> Voltar para a listagem</i></a>
+</div>
+
+<br />
+
+
+<div class="row">
+    <div class="col-sm-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="card">
+                <div class="card-header">Informações do livro</div>
+                <div class="card-body row">
+
+                    <div class="form-group col-sm-8">
+                        <label asp-for="LivroNome" class="control-label"></label>
+                        <input asp-for="LivroNome" class="form-control" />
+                        <div>
+                            <span asp-validation-for="LivroNome" class="text-danger"></span>
+                        </div>
+
+
+                        <label asp-for="LivroAutor" class="control-label"></label>
+                        <input asp-for="LivroAutor" class="form-control" />
+                        <div>
+                            <span asp-validation-for="LivroAutor" class="text-danger"></span>
+                        </div>
+
+
+                        <label asp-for="LivroEditora" class="control-label"></label>
+                        <input asp-for="LivroEditora" class="form-control" />
+                        <div>
+                            <span asp-validation-for="LivroEditora" class="text-danger"></span>
+                        </div>
+
+
+                        <label asp-for="LivroAnoPublicacao" class="control-label"></label>
+                        <input asp-for="LivroAnoPublicacao" class="form-control" />
+                        <div>
+                            <span asp-validation-for="LivroAnoPublicacao" class="text-danger"></span>
+                        </div>
+
+                        <label asp-for="LivroEdicao" class="control-label"></label>
+                        <input asp-for="LivroEdicao" class="form-control" />
+                        <div>
+                            <span asp-validation-for="LivroEdicao" class="text-danger"></span>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-sm "><i class="fa fa-plus-circle"> Incluir Livro</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

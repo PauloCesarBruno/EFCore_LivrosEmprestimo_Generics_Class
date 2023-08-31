@@ -1,0 +1,232 @@
+﻿@model EmprestimoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Inclusão de novo empréstimo de livro(s) a um cliente.</h3>
+<hr />
+<div>
+    <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"> Voltar</i></a>
+</div>
+<br />
+<div class="row">
+    <div class="col-md">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!--IdCliente Escondido-->
+
+            <div hidden class="form-group">
+                <input id="idCliente" asp-for="idCliente" class="form-control" />
+            </div>
+
+            <!--================================================-->
+            <!--IdLivro Escondido-->
+
+            <div hidden class="form-group">
+                <input id="idLivro" asp-for="idLivro" class="form-control" />
+            </div>
+
+            <!--================================================-->
+            <div>
+                <div class="card">
+                    <div class="card-header">Clientes</div>
+                    <div class="card-body">
+                        <table style="font-size: 13px;" id="listClienteTable" class="table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 0px 2px 0px 2px; text-align:center;">
+                                        @Html.DisplayNameFor(model => model.oCliente.Id)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oCliente.CliCpf)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oCliente.CliNome)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oCliente.CliTeleoneCelular)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oCliente.CliTelefoneFixo)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.oListCliente)
+                                {
+                                    <tr onclick="passIdCliente('@item.Id')">
+                                        <td style="padding: 0px 2px 0px 2px; color: red; text-align: center">
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.CliCpf)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.CliNome)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.CliTeleoneCelular)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.CliTelefoneFixo)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div id="esconder" hidden = true class="card">
+                    <div class="card-header">Livros</div>
+                    <div class="card-body">
+                        <table style="font-size: 13px;" id="listLivroTable" hidden="true" class="table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 0px 2px 0px 2px; text-align:center;">
+                                        @Html.DisplayNameFor(model => model.oLivro.Id)
+                                    </th>
+                                    <th style="padding: 0px 25px 0px 25px; text-align:left;">
+                                        @Html.DisplayNameFor(model => model.oLivro.LivroNome)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oLivro.LivroAutor)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oLivro.LivroEditora)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oLivro.LivroAnoPublicacao)
+                                    </th>
+                                    <th style="padding: 0px 10px 0px 10px;">
+                                        @Html.DisplayNameFor(model => model.oLivro.LivroEdicao)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.oListLivro)
+                                {
+                                    <tr onclick="passIdLivro('@item.Id')">
+                                        <td style="padding: 0px 2px 0px 2px; color: red; text-align: center">
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td  style="padding: 0px 25px 0px 25px; text-align: left">
+                                            @Html.DisplayFor(modelItem => item.LivroNome)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.LivroAutor)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.LivroEditora)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.LivroAnoPublicacao)
+                                        </td>
+                                        <td style="padding: 0px 10px 0px 10px;">
+                                            @Html.DisplayFor(modelItem => item.LivroEdicao)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <div id="esconder2" hidden="true" class="card">
+                    <div class="card-header">Datas</div>
+                    <div class="card-body row">
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label asp-for="dataEmprestimo" class="control-label"></label>
+                                <input readonly asp-for="dataEmprestimo" class="form-control" />
+                                <span asp-validation-for="dataEmprestimo" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label asp-for="dataEntrega" class="control-label"></label>
+                                <input asp-for="dataEntrega" class="form-control" />
+                                <span asp-validation-for="dataEntrega" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-inline mb-3">
+                    <h6 style="margin-right: 50%;" id="aviso" hidden=" true" class="text-primary shadow p-3 mb-5 bg-white rounded">Agora, para Ativar o botão de INCLUSÃO, escolha o LIVRO clicando na tabela acima.</h6>
+                    <button type="submit" id="botao" hidden="true" disabled="true" class="btn btn-success btn-sm "><i class="fa fa-plus-circle"> Incluir novo emprestimo</i></button>
+                </div>
+
+                <div id="info1" class="form-group">
+                    <h6 style="margin-right: 50%;" class="text-primary shadow p-3 mb-5 bg-white rounded">Para Gerar o botão de INCLUSÃO, escolha o CLIENTE clicando na tabela acima.</h6>
+                </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+
+        // Tabela Clientes -> Plugin Datatable
+
+        $(document).ready(function () {
+            var listClienteTable = $('#listClienteTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
+                }
+            });
+
+            // Tabela Livros -> Plugin Datatable
+
+            var listLivroTable = $('#listLivroTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
+                }
+            });
+
+            // Tabela Clientes -> Marcação de Linha
+
+            $('#listClienteTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    listClienteTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+            // Tabela Livros -> Marcação de Linha
+
+            $('#listLivroTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    listLivroTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+        });
+
+        function passIdCliente(idCliente) {
+            document.getElementById('idCliente').value = idCliente;
+            document.getElementById('botao').hidden = false;
+            document.getElementById('info1').hidden = true;
+            document.getElementById('listLivroTable').hidden = false; 
+            document.getElementById('esconder').hidden = false;
+            document.getElementById('esconder2').hidden = false;
+            document.getElementById('aviso').hidden = false;
+        }
+
+        function passIdLivro(idLivro) {
+            document.getElementById('idLivro').value = idLivro;
+            document.getElementById('botao').disabled = false;
+            document.getElementById('aviso').hidden = true;
+           
+        }
+        
+    </script>
+}

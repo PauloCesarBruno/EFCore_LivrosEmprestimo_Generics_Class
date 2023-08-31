@@ -1,0 +1,101 @@
+﻿@model IEnumerable<LivrariaControleEmprestimo.DATA.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Listagem de clientes</h3>
+<hr />
+
+<p>
+    <a class="btn btn-success btn-sm" asp-action="Create"><i class="fa fa-user"></i> Add. novo cliente</a>
+</p>
+<table style="font-size: 13px;" id="tblClientes" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliCpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliTeleoneCelular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliTelefoneFixo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td style="padding-left: 25px; color: red;">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliCpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliTeleoneCelular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliTelefoneFixo)
+            </td>
+            <td class="row col-md">
+                <a asp-action="Edit" class="btn btn-warning btn-sm rounded-circle mr-1" data-toggle="tooltip" data-placement="top" title="Alterar" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o"></i></a>
+                <a asp-action="Details" class="btn btn-primary btn-sm rounded-circle mr-1"  data-toggle="tooltip" data-placement="top" title="Detalhes" asp-route-id="@item.Id"><i class="fa fa-eye"></i></a>
+
+
+                <!-- Button trigger modal -->
+                <button type="button"  class="btn btn-danger btn-sm rounded-circle mr-1" data-toggle="modal" data-target="#DeleteModal-@item.Id"data-toggle="tooltip" data-placement="top" title="Excluir" >
+                    <i class="fa fa-times-circle"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="DeleteModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="DeleteModalLabel">Excluir Cliente</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja Realmente Excluir o Cliente @item.CliNome ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Não</button>
+                                <a asp-action="Delete" class="btn btn-danger mr-1" asp-route-id="@item.Id"><i class="fa fa-check"></i> Sim</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+
+    $(document).ready(function() {
+        $('#tblClientes').DataTable( {
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.10.25/i18n/Portuguese-Brasil.json'
+            }
+        } );
+    } );
+
+    </script>
+}

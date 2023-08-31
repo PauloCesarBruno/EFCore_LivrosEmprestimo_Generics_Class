@@ -1,0 +1,48 @@
+﻿@model LivrariaControleEmprestimo.DATA.Models.Livro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do livro</h1>
+
+<div>
+    <h4>Confira os detalhes abaixo</h4>
+    <hr />
+
+    <div>
+        <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-pencil-square-o"></i> Alterar livro</a>
+        <a class="btn btn-primary btn-sm" asp-action="Index"><i class="fa fa-arrow-left"> Voltar</i></a>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-sm-8">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card">
+                    <div class="card-header">Informações sobre o livro</div>
+                    <div class="card-body row">
+
+                        <div class="form-group col-sm-8">
+                            <label asp-for="LivroNome" class="control-label"></label>
+                            <input disabled asp-for="LivroNome" class="form-control" />
+
+                            <label asp-for="LivroAutor" class="control-label"></label>
+                            <input disabled asp-for="LivroAutor" class="form-control" />
+
+                            <label asp-for="LivroEditora" class="control-label"></label>
+                            <input disabled asp-for="LivroEditora" class="form-control" />
+
+                            <label asp-for="LivroAnoPublicacao" class="control-label"></label>
+                            <input disabled asp-for="LivroAnoPublicacao" class="form-control" />
+
+                            <label asp-for="LivroEdicao" class="control-label"></label>
+                            <input disabled asp-for="LivroEdicao" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
