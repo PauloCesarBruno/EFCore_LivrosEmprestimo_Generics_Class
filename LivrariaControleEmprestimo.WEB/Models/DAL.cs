@@ -9,7 +9,7 @@ namespace LivrariaControleEmprestimo.WEB.Models
         public static readonly String Server = "HOME";
         public static readonly String Database = "Session"; // Outro Banco
         public static readonly String User = "sa";
-        public static readonly String Password = "Paradoxo22";
+        public static readonly String Password = "Paradoxo22;TrustServerCertificate=True";
 
         public static readonly String StrSql = $"Server = {Server}; Database = {Database}; Uid = {User}; Pwd = {Password}";
 
