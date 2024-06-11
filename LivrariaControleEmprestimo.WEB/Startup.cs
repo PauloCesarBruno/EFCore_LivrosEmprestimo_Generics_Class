@@ -32,14 +32,14 @@ namespace LivrariaControleEmprestimo.WEB
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink(); /* Instalado no Projeto .WEB para visualização em tempo real
-                atraxez do painel de Link do Navegador. */
+                atravez do painel de Link do Navegador. */
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-            
+
             app.UseRouting();
             app.UseSession();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
