@@ -30,9 +30,7 @@ namespace LivrariaControleEmprestimo.DATA.Models
                 /* Atenção: Instalar Pacotes na Biblioteca de Classe somente: 
                  * Microsoft.Extensions.Configiration.FileExtension                                                                               
                 Microsoft.Extencsions.Configiration.Json                                                                                 
-                Microsoft.Extensions.ConfigirationManager */
-
-                
+                Microsoft.Extensions.ConfigirationManager */                    
 
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
